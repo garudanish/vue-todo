@@ -1,7 +1,10 @@
 <template>
   <ul>
-    <li v-bind:key="todoItem.id" v-for="todoItem in todoItems">
+    <li v-bind:key="todoItem.id" v-for="todoItem in todoItems" class="shadow">
       {{ todoItem.content }}
+      <span class="removeBtn" v-on:click="removeTodo">
+        <i class="fas fa-trash-alt" />
+      </span>
     </li>
   </ul>
 </template>
@@ -20,12 +23,48 @@ export default {
       }
     }
   },
+  methods: {
+    removeTodo: function () {},
+  },
 };
 </script>
 
-<style>
+<style scoped>
 ul {
-  padding: 0;
-  margin: 0;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  text-align: left;
+}
+
+li {
+  display: flex;
+  min-height: 50px;
+  height: 50px;
+  padding: 0 0.9rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  line-height: 50px;
+  background-color: #fff;
+}
+
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+}
+
+.checkBtn {
+  margin-right: 5px;
+  color: #62acde;
+  line-height: 45px;
+}
+
+.checkBtnCompleted {
+  color: #b3adad;
+}
+
+.textCompleted {
+  color: #b3adad;
+  text-decoration: line-through;
 }
 </style>
